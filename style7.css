@@ -1,0 +1,146 @@
+/* Base Page Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    direction: rtl; /* Sets native Right-To-Left reading and grid alignment */
+    overflow-x: hidden;
+    padding-bottom: 80px;
+}
+
+/* Header Utilities */
+.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 15px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.control-btn {
+    background: #00adb5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.control-btn:hover {
+    background: #007a80;
+}
+
+/* 6x6 Responsive RTL Grid Matrix */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Grid Cell Wrapper */
+.grid-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #1e1e1e;
+    border-radius: 8px;
+    cursor: pointer;
+    /* Keeps grid geometry completely locked when children scale */
+    overflow: visible; 
+}
+
+/* Internal Images */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform-origin: center;
+    position: relative;
+    z-index: 1;
+    border: 2px solid transparent;
+}
+
+/* Hover and Active State overlay properties (2x scale without shifting grid) */
+.grid-item:hover img,
+.grid-item.active img {
+    transform: scale(1.5);
+    z-index: 99;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
+}
+
+.grid-item.active img {
+    border-color: #00adb5;
+}
+
+/* Scroll to Top UI element */
+.scroll-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px; /* Positioned left for strict separation in RTL layouts */
+    background: #00adb5;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.scroll-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Overrides (Keeps layout proportional across form factors) */
+@media (max-width: 1024px) {
+    .grid-container {
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr); /* Forces structural 6x6 matrix even on mobiles */
+        gap: 5px;
+        padding: 5px;
+    }
+    .grid-item:hover img,
+    .grid-item.active img {
+        transform: scale(1.5); /* Safe bounds mapping to fit typical smartphone viewport constraints */
+    }
+}
+
+.flex-containerb {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 400px;           /* Gives container height to see vertical centering */
+  border: 1px solid #ccc;
+}
+
+.flex-containerb img {
+  width: 500px;            /* Resizes image width */
+  height: auto;            /* Keeps aspect ratio */
+}
+
