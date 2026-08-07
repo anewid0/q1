@@ -75,7 +75,7 @@ body {
 }
 
 /* Hover and Active State overlay properties (2x scale without shifting grid) */
-.grid-item:hover img,
+/* .grid-item:hover img, */
 .grid-item.active img {
     transform: scale(1.5);
     z-index: 99;
@@ -125,7 +125,7 @@ body {
         gap: 5px;
         padding: 5px;
     }
-    .grid-item:hover img,
+    /* .grid-item:hover img,  */
     .grid-item.active img {
         transform: scale(1.5); /* Safe bounds mapping to fit typical smartphone viewport constraints */
     }
@@ -141,6 +141,15 @@ body {
 
 .flex-containerb img {
   width: 500px;            /* Resizes image width */
+  height: auto;            /* Keeps aspect ratio */
+}
+
+.text-center-container {
+  text-align: center;      /* Centers any inline child elements inside */
+}
+
+.text-center-container img {
+  width: 450px;            /* Resizes image width */
   height: auto;            /* Keeps aspect ratio */
 }
 
