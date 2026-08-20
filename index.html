@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urdu Word Recitation Layout</title>
+    <!-- Google Font for standard Urdu typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f4f7;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Noto Nastaliq Urdu', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 20px 0;
+            direction: rtl;
+        }
+
+        /* Responsive image containment */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* 1. OUTER BOX */
+        .outer-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+        }
+
+        /* 2. INNER BOX */
+        .inner-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Interactive Word Boxes */
+        .img-box {
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0px;
+            cursor: pointer;
+            user-select: none;
+            overflow: hidden;
+            background-color: #ffffff;
+            border: 1.5px solid #e5e7eb;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.3s ease, 
+                        border-color 0.3s ease,
+                        background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        } 
+
+        .img-box:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+	 
+        /* Active Recitation State */
+        .img-box.active {
+            transform: scale(1.3);
+            z-index: 50;
+            border: 4px solid red;
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.6);
+        }
+
+        /* Box Content Typography */
+        .img-box .urdu-word {
+            font-size: 28px;
+            color: #1f2937;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* SECTION A: Variable Alignment Row */
+        .alignment-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: rgba(249, 249, 251, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eaeaea;
+        }
+
+        .top-two-row,
+        .bottom-two-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .top-two-row .img-box, 
+        .bottom-two-row .img-box {
+            width: 45%;
+            min-height: 80px;
+            background-color: #e0f2fe;
+            border-color: #38bdf8;
+        }
+
+        /* SECTION B: 4x4 Grid Layout */
+        .grid-4x4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        /* SECTION C: 5 Columns Grid Layout */
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        /* Section Headings */
+        h3 {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden Audio Player with Loop Enabled -->
+    <audio id="recitationAudio" preload="auto" loop src="qaida1lesson1.mp3"></audio>
+
+    <!-- OUTER BOX BOUNDARY -->
+    <div class="outer-box">
+        
+        <!-- INNER BOX CONTAINER -->
+        <div class="inner-box">
+
+            <!-- 1. VARIABLE ALIGNMENT REGION -->
+            <div class="alignment-section">
+                <div class="top-two-row">
+                    <div class="img-box" data-start="0" data-end="8">
+                        <img src="images/np0.png" alt="0">
+                    </div>
+                </div>
+
+                <div class="bottom-two-row">
+                    <div class="img-box" data-start="8.4" data-end="13">
+                        <img src="images/np00.png" alt="00">
+                    </div>
+</div>			<div class="bottom-two-row">
+                    <div class="img-box" data-start="13" data-end="22">
+                        <img src="images/np000.png" alt="000">
+                    </div></div>
+                </div>
+            </div>
+
+            <!-- 2. 4 X 4 GRID REGION -->
+            <div>
+                <div class="grid-4x4">
+                    <!-- Row 1 -->
+                    <div class="img-box" data-start="23" data-end="24"><img src="images/np01.png" alt="1"></div>
+                    <div class="img-box" data-start="25" data-end="26"><img src="images/np02.png" alt="2"></div>
+                    <div class="img-box" data-start="27" data-end="28"><img src="images/np03.png" alt="3"></div>
+                    <div class="img-box" data-start="29" data-end="30"><img src="images/np04.png" alt="4"></div>
+                    <!-- Row 2 -->
+                    <div class="img-box" data-start="31" data-end="35"><img src="images/np05.png" alt="5"></div>
+                    <div class="img-box" data-start="36" data-end="38"><img src="images/np06.png" alt="6"></div>
+                    <div class="img-box" data-start="38" data-end="40"><img src="images/np07.png" alt="7"></div>
+                    <div class="img-box" data-start="41" data-end="44"><img src="images/np08.png" alt="8"></div>
+                    <!-- Row 3 -->
+                    <div class="img-box" data-start="44" data-end="48"><img src="images/np09.png" alt="9"></div>
+                    <div class="img-box" data-start="48" data-end="50"><img src="images/np10.png" alt="10"></div>
+                    <div class="img-box" data-start="50.5" data-end="52"><img src="images/np11.png" alt="11"></div>
+                    <div class="img-box" data-start="52.5" data-end="56"><img src="images/np12.png" alt="12"></div>
+                    <!-- Row 4 -->
+                    <div class="img-box" data-start="57" data-end="61"><img src="images/np13.png" alt="13"></div>
+                    <div class="img-box" data-start="61" data-end="64.5"><img src="images/np14.png" alt="14"></div>
+                    <div class="img-box" data-start="64.6" data-end="68.5"><img src="images/np15.png" alt="15"></div>
+                    <div class="img-box" data-start="69" data-end="71"><img src="images/np16.png" alt="16"></div>
+                    <!-- Row 5 -->
+                    <div class="img-box" data-start="71" data-end="73"><img src="images/np17.png" alt="17"></div>
+                    <div class="img-box" data-start="73" data-end="76"><img src="images/np18.png" alt="18"></div>
+                    <div class="img-box" data-start="77" data-end="80.5"><img src="images/np19.png" alt="19"></div>
+                    <div class="img-box" data-start="80.6" data-end="82"><img src="images/np20.png" alt="20"></div>
+                    <!-- Row 6 -->
+                    <div class="img-box" data-start="83" data-end="86.5"><img src="images/np21.png" alt="21"></div>
+                    <div class="img-box" data-start="87" data-end="90"><img src="images/np22.png" alt="22"></div>
+                    <div class="img-box" data-start="91" data-end="94.5"><img src="images/np23.png" alt="23"></div>
+                    <div class="img-box" data-start="95" data-end="98.5"><img src="images/np24.png" alt="24"></div>
+                </div>
+            </div>
+
+            <!-- 3. 5-COLUMN GRID REGION -->
+            <div>
+                <div class="grid-5">
+                    <div class="img-box" data-start="100" data-end="102.7"><img src="images/np25.png" alt="25"></div>
+                    <div class="img-box" data-start="104" data-end="107.1"><img src="images/np26.png" alt="26"></div>
+                    <div class="img-box" data-start="107.2" data-end="109"><img src="images/np27.png" alt="27"></div>
+                    <div class="img-box" data-start="109" data-end="110.5"><img src="images/np28.png" alt="28"></div>
+                    <div class="img-box" data-start="111" data-end="113"><img src="images/np29.png" alt="29"></div>
+                </div>
+            </div>
+ 
+            <!-- 4. LAST LINE -->
+            <div class="alignment-section">
+                <div class="bottom-two-row">
+                    <div class="img-box" data-start="113.5" data-end="126"><img src="images/np30.png" alt="30"></div></div>
+		<div class="bottom-two-row">
+                    <div class="img-box" data-start="126.5" data-end="139"><img src="images/np31.png" alt="31"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('recitationAudio');
+        const boxes = document.querySelectorAll('.img-box');
+        let wasPlayingBeforeHidden = false;
+
+        // Try autoplay on load; start on first click if blocked by browser
+        window.addEventListener('DOMContentLoaded', () => {
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    wasPlayingBeforeHidden = true;
+                }).catch(() => {
+                    document.body.addEventListener('click', () => {
+                        audio.play();
+                        wasPlayingBeforeHidden = true;
+                    }, { once: true });
+                });
+            }
+        });
+
+        // Pause playback when tab is not active, resume when tab is active
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (!audio.paused) {
+                    wasPlayingBeforeHidden = true;
+                    audio.pause();
+                } else {
+                    wasPlayingBeforeHidden = false;
+                }
+            } else {
+                if (wasPlayingBeforeHidden) {
+                    audio.play().catch(() => {});
+                }
+            }
+        });
+
+        // Time tracking & auto-scroll active recitation into view
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            
+            boxes.forEach((box) => {
+                const start = parseFloat(box.getAttribute('data-start'));
+                const end = parseFloat(box.getAttribute('data-end'));
+
+                if (currentTime >= start && currentTime < end) {
+                    if (!box.classList.contains('active')) {
+                        box.classList.add('active');
+                        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                } else {
+                    box.classList.remove('active');
+                }
+            });
+        });
+
+        // Click to jump to timestamp
+        boxes.forEach((box) => {
+            box.addEventListener('click', () => {
+                const start = parseFloat(box.getAttribute('data-start'));
+                if (!isNaN(start)) {
+                    audio.currentTime = start;
+                    audio.play();
+                    wasPlayingBeforeHidden = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
